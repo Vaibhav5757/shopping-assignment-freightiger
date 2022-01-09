@@ -1,0 +1,23 @@
+.container {
+  padding: 10px 15px;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: auto;
+  width: 100%;
+  z-index: 1;
+  background: #fff;
+}
+
+.main-content {
+  padding: 105px 15px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

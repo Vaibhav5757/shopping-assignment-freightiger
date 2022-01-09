@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="image-container">
+    <img class="image" [src]="product.searchImage" alt="" />
+  </div>
+  <div class="details">
+    <div class="product-name">{{ product.productName }}</div>
+    <div class="product-sub-type">{{ product.brand }}</div>
+    <div class="mrp">{{ product.price }} Rs</div>
+  </div>
+  <div *ngIf="!inCart" class="button add-to-cart">
+    <button (click)="addToCart(product)" class="btn">Add to Cart</button>
+  </div>
+  <div *ngIf="inCart" class="button remove-from-cart">
+    <button (click)="removeFromCart(product)" class="btn">
+      Remove From Cart
+    </button>
+  </div>
+</div>

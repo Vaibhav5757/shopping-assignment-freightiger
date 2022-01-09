@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="logo">
+    <a routerLink="/products" class="site-name">My Shopping</a>
+  </div>
+  <a class="cart" routerLink="/cart">
+    <img src="assets/kindpng_1771604.png" alt="" />
+    <span class="cart-item-number" *ngIf="countProduct$ | async">{{
+      countProduct$ | async
+    }}</span>
+    <span class="total-amount" *ngIf="countProduct$ | async">{{
+      totalPrice$ | async
+    }}</span>
+  </a>
+</div>

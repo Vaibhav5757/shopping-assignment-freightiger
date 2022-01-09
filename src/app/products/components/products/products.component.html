@@ -1,0 +1,11 @@
+<div class="loader" *ngIf="products.length == 0">
+  <app-loader></app-loader>
+</div>
+
+<h3 class="heading" *ngIf="products.length > 0">Products:</h3>
+
+<div class="container">
+  <ng-container *ngFor="let product of products">
+    <app-card [product]="product" class="card"> </app-card>
+  </ng-container>
+</div>

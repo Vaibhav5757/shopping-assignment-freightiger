@@ -1,0 +1,46 @@
+<div class="loader" *ngIf="persons.length == 0">
+  <app-loader></app-loader>
+</div>
+
+<div
+  class="persons-container"
+  infinite-scroll
+  (scrolled)="onScrollDown($event)"
+  (scrolledUp)="onScrollUp($event)"
+>
+  <div class="list-group">
+    <div class="person-card" *ngFor="let person of persons">
+      <div class="details">
+        <div class="picture">
+          <img src="{{ person.picture.large }}" alt="" />
+        </div>
+        <div class="person-details">
+          <p class="name">
+            {{
+              person.name.title +
+                " " +
+                person.name.first +
+                " " +
+                person.name.last
+            }}
+          </p>
+          <address class="address">
+            Reach Me at <span>{{ person.email }}</span
+            ><br />
+            City:
+            {{
+              person.location.street.number + " " + person.location.street.name
+            }}<br />
+            {{ person.location.city + " " + person.location.state }}<br />
+            {{
+              person.location.country +
+                ", PinCode - " +
+                person.location.postcode
+            }}<br />
+            USA
+          </address>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<button class="btn" (click)="clearCart()">Remove All</button>
+
+<h3 class="heading">Cart</h3>
+
+<div class="container">
+  <app-card
+    *ngFor="let product of products$ | async"
+    [product]="product"
+    [in-cart]="true"
+    class="card"
+  >
+  </app-card>
+</div>
