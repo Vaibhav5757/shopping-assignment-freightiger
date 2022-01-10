@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Person } from '../models/persons';
 import { RandomPersonService } from './services/random-person.service';
 
@@ -7,9 +8,10 @@ import { RandomPersonService } from './services/random-person.service';
   templateUrl: './demo.component.html',
   styleUrls: ['./demo.component.css'],
 })
-export class DemoComponent {
+export class DemoComponent implements OnDestroy {
   persons: Person[] = [];
   direction = '';
+  personAPISubs!: Subscription;
 
   constructor(private personSvc: RandomPersonService) {
     this.getTenRandomPerson();
@@ -27,8 +29,12 @@ export class DemoComponent {
   }
 
   getTenRandomPerson() {
-    this.personSvc.getTenRandomPerson().subscribe((el) => {
+    this.personAPISubs = this.personSvc.getTenRandomPerson().subscribe((el) => {
       this.persons.push(...el.results);
     });
+  }
+
+  ngOnDestroy(): void {
+    this.personAPISubs.unsubscribe();
   }
 }
